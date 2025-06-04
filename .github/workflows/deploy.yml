@@ -50,7 +50,6 @@ jobs:
   cdk-deploy:
     # Run `cdk deploy`
     needs: [check-changes, build-and-push]
-    if: always()  # Override "needs" if build-and-push was skipped
     runs-on: ubuntu-latest
     env:
       IMAGE_TAG: ${{ github.sha }}
