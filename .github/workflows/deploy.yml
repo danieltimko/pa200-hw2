@@ -7,10 +7,12 @@ jobs:
     # Checks if application code changed (in recipes-rs directory)
     runs-on: ubuntu-latest
     outputs:
-      recipes_changed: 'true' # ${{ steps.filter.outputs.recipes }}
+      recipes_changed: ${{ steps.filter.outputs.recipes }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Check for changes in recipes-rs/
         id: filter
