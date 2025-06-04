@@ -1,0 +1,16 @@
+[package]
+name = "recipes-rs"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+dotenvy = "0.15.7"
+diesel = { version = "2.2.4", features = ["numeric"] }
+diesel-async = { version = "0.5.1", features = ["postgres", "deadpool"] }
+bigdecimal = "0.4.5"
+actix-web = "4"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+derive_more = { version = "1.0.0", features = ["display", "error"] }
