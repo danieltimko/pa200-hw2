@@ -7,10 +7,15 @@ from aws_cdk import (
     aws_ecs_patterns, SecretValue, Fn, CfnOutput, aws_s3,
 )
 from constructs import Construct
+import os
+
+
+image_tag = os.getenv("IMAGE_TAG", "latest")
 
 DB_NAME = "hw2"
 DB_USER = "dbadmin"
-APP_DOCKER_IMAGE = "danieltimko/recipes-rs:v3"
+APP_DOCKER_IMAGE = f"danieltimko/recipes-rs:{image_tag}"
+
 
 class Hw2Stack(Stack):
     def __init__(self, scope: Construct, construct_id: str, **kwargs):
