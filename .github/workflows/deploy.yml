@@ -7,7 +7,7 @@ jobs:
     # Checks if application code changed (in recipes-rs directory)
     runs-on: ubuntu-latest
     outputs:
-      recipes_changed: ${{ steps.filter.outputs.recipes }}
+      recipes_changed: 'true' # ${{ steps.filter.outputs.recipes }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -49,6 +49,9 @@ jobs:
     # Run `cdk deploy`
     needs: [check-changes, build-and-push]
     runs-on: ubuntu-latest
+    env:
+      IMAGE_TAG: ${{ github.sha }}
+      DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -65,4 +68,3 @@ jobs:
 
       - name: Run CDK deploy
         run: cdk deploy --require-approval never
-
