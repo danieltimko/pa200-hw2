@@ -85,6 +85,7 @@ async fn static_images() -> impl Responder {
         <h1>Recipe Images</h1>
         <img src="https://recipes-rs-static-content.s3.eu-west-1.amazonaws.com/recipe1.jpg" alt="Recipe 1">
         <img src="https://recipes-rs-static-content.s3.eu-west-1.amazonaws.com/recipe2.jpg" alt="Recipe 2">
+        <img src="https://recipes-rs-static-content.s3.eu-west-1.amazonaws.com/recipe3.jpg" alt="Recipe 3">
     </body>
     </html>
     "#;
