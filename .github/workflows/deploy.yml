@@ -78,3 +78,8 @@ jobs:
 
       - name: Run CDK deploy
         run: cdk deploy --require-approval never
+
+      # Synchronize static files in S3 ; Could be moved to a separate job
+      - name: Sync static files to S3
+        run: |
+          aws s3 sync static/ s3://recipes-rs-static-content --delete
