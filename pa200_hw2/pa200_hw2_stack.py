@@ -53,7 +53,6 @@ class Hw2Stack(Stack):
                 restrict_public_buckets=False
             )
         )
-        # TODO: In CI/CD, upload /static folder to s3 bucket? ... aws s3 sync ./static s3://your-bucket-name/static
 
         # Secret for database URL
         db_url = Fn.sub(
@@ -91,8 +90,3 @@ class Hw2Stack(Stack):
         # Grant required permissions
         db_credentials_secret.grant_read(fargate_service.task_definition.task_role)
         database.connections.allow_default_port_from(fargate_service.service)
-
-        # TODO delete
-        CfnOutput(self, "DatabaseUrlOutput", value=db_url)
-        CfnOutput(self, "S3BucketUrl", value=f"https://{bucket.bucket_name}.s3.amazonaws.com/")
-        CfnOutput(self, "S3BucketUrl2", value=bucket.bucket_website_url)
